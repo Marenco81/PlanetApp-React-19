@@ -10,7 +10,8 @@ interface Props {
 
 const Planets: FC<Props> = ({getPlanets}) => {
 
-  const planets = use(getPlanets);
+  const originalPlanets = use(getPlanets);
+  const [planets, setPlanets] = useState<Planet[]>(originalPlanets);
 
   // const [isLoading, setIsLoading] = useState(true);
   // const [error, setError] = useState<string | null>(null);
@@ -28,9 +29,10 @@ const Planets: FC<Props> = ({getPlanets}) => {
   //     });
   // }, []);
 
-  const handleAddPlanet = async (planet: Partial<Planet>) => {
-    const newPlanet = await createPlanetAction(planet);
-    console.log('exito', newPlanet);
+  const handleAddPlanet = async (planet: Planet) => {
+    // const newPlanet = await createPlanetAction(planet);
+    // console.log('exito', newPlanet);
+    setPlanets([...planets, planet])
   };
 
   return (
