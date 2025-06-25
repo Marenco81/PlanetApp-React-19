@@ -2,7 +2,7 @@
   "planets": [
     {
       "id": "a1b2c3",
-      "name": "Mercurio",
+      "name": "MERCURIO",
       "type": "Planeta",
       "distanceFromSun": "57.91 millones de km"
     },
@@ -32,7 +32,7 @@
     },
     {
       "id": "4148",
-      "name": "Saturno",
+      "name": "SATURNO",
       "type": "Planeta",
       "distanceFromSun": "800 millones de km"
     },
