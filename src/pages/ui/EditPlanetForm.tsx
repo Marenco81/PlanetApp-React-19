@@ -1,6 +1,7 @@
 import { useActionState, useState } from 'react';
 import { Planet } from '../../interfaces/planet.interface';
 import { createPlanetActionForm } from '../../actions/create-planet.action';
+import { SubmitButton } from './SubmitButton';
 
 interface Props {
   onAddPlanet: (planet: Planet) => void;
@@ -50,13 +51,14 @@ export const EditPlanetForm = ({ onAddPlanet }: Props) => {
         name="distanceFromSun"
         required
       />
-      <button
+      <SubmitButton></SubmitButton>
+      {/* <button
         type="submit"
         className="bg-blue-500 disabled:bg-gray-500 text-white p-2 rounded flex-1 sm:flex-none"
         disabled={isPending}
       >
         Agregar planeta
-      </button>
+      </button> */}
     </form>
   );
 };
