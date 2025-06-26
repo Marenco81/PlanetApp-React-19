@@ -1,4 +1,4 @@
-import { useOptimistic } from 'react';
+import { useOptimistic, useTransition } from 'react';
 import { Planet } from '../../interfaces/planet.interface';
 import { updatePlanetAction } from '../../actions/update-planet.action';
 
@@ -7,6 +7,8 @@ interface Props {
 }
 
 export const PlanetList = ({ planets }: Props) => {
+
+  const [isPending, startTransition] = useTransition();
 
   const[optimisticPlanets, setOptimisticNewPlanets] = useOptimistic(
     planets,
@@ -21,9 +23,26 @@ export const PlanetList = ({ planets }: Props) => {
   );
 
   const handleUpdatedPlanet = async (planet: Planet) =>{
-    planet.name = planet.name.toUpperCase();
-    setOptimisticNewPlanets(planet)
-    const updatedPlanet = await updatePlanetAction(planet);
+
+    startTransition( async() => {
+
+      const data = {
+        ...planet,
+        name: planet.name.toUpperCase()
+      }
+
+       try {
+         
+        setOptimisticNewPlanets(data)
+        const updatedPlanet = await updatePlanetAction(data);
+        setOptimisticNewPlanets(updatedPlanet);
+
+
+      } catch (error) {
+        setOptimisticNewPlanets(planet)
+        console.log(error)
+      }
+    });
 
     
   };

@@ -8,7 +8,7 @@
     },
     {
       "id": "d4e5f6",
-      "name": "Venus",
+      "name": "VENUS",
       "type": "Planeta",
       "distanceFromSun": "108.2 millones de km"
     },
@@ -41,6 +41,12 @@
       "name": "Uranus",
       "type": "Planeta",
       "distanceFromSun": "850 millones de km"
+    },
+    {
+      "id": "f377",
+      "name": "NEPTUNO",
+      "type": "Planeta",
+      "distanceFromSun": "900 millones de km"
     }
   ]
 }
